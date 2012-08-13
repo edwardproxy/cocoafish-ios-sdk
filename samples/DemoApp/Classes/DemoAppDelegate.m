@@ -11,7 +11,7 @@
 #import "Cocoafish.h"
 
 // Your cocoafish app key must be set before running this demo
-//#define COCOAFISH_APP_KEY @"your app key here"
+#define COCOAFISH_APP_KEY @"TZPUNRnxQRZuEHJ0OENPgKiTFZQjUzb5"
 #if !defined(COCOAFISH_APP_KEY) 
     #error : Please uncomment above line and set your app key
 #endif
