@@ -392,6 +392,42 @@
 	NSString *appKey = [[Cocoafish defaultCocoafish] getAppKey];
     NSString *paramsString = nil;
     NSString *backendUrl = [[Cocoafish defaultCocoafish] apiURL];
+    
+    //------------------------------------------------
+    //added by Edward Sun 2012-08-23
+    BOOL isThreeLegged = [Cocoafish defaultCocoafish].isThreeLegged;
+    if (isThreeLegged) {
+        NSString *oauthConsumerKey = [[Cocoafish defaultCocoafish] getOauthConsumerKey];
+        NSString *accessToken = [Cocoafish defaultCocoafish].accessToken;
+        
+        if ([additionalParams count] > 0) {
+            paramsString = [additionalParams componentsJoinedByString:@"&"];
+        }
+        if ([accessToken length] > 0 && [oauthConsumerKey length] > 0) {
+            if (paramsString) {
+                url = [NSString stringWithFormat:@"%@://%@/%@?oauth_consumer_key=%@&%@&access_token=%@&%@",
+                       httpProtocol,
+                       backendUrl,
+                       partialUrl,
+                       oauthConsumerKey,
+                       @"suppress_response_codes=true",
+                       accessToken,
+                       paramsString];
+            } else {
+                url = [NSString stringWithFormat:@"%@://%@/%@?oauth_consumer_key=%@&%@&access_token=%@",
+                       httpProtocol,
+                       backendUrl,
+                       partialUrl,
+                       oauthConsumerKey,
+                       @"suppress_response_codes=true",
+                       accessToken];
+            }
+        }
+        
+        return url;
+    }
+    //------------------------------------------------
+    
     if ([additionalParams count] > 0) {
         paramsString = [additionalParams componentsJoinedByString:@"&"];
     }
