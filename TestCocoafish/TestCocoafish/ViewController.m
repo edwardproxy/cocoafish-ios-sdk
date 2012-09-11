@@ -64,11 +64,11 @@
 
 - (IBAction)showView:(id)sender
 {
-    [Cocoafish initializeWithOauthConsumerKey:@"PwlZOBLGdZ0SxTohTf51mGwrrLivN5CI"
-                               consumerSecret:@"cqSreePIH9pMW37MAFO5epKIqz46oWWD"
-                                 customAppIds:[NSDictionary dictionaryWithObject:@"facebookAppId"
-                                                                          forKey:@"Facebook"]];
-//    [Cocoafish initializeWithOauthConsumerKey:@"PwlZOBLGdZ0SxTohTf51mGwrrLivN5CI"];
+//    [Cocoafish initializeWithOauthConsumerKey:@"PwlZOBLGdZ0SxTohTf51mGwrrLivN5CI"
+//                               consumerSecret:@"cqSreePIH9pMW37MAFO5epKIqz46oWWD"
+//                                 customAppIds:[NSDictionary dictionaryWithObject:@"facebookAppId"
+//                                                                          forKey:@"Facebook"]];
+    [Cocoafish initializeWithOauthConsumerKey:@"PwlZOBLGdZ0SxTohTf51mGwrrLivN5CI"];
     Cocoafish *sdk = Cocoafish.defaultCocoafish;
     sdk.authURL = @"security-staging.cloud.appcelerator.com";
     sdk.apiURL = @"api-staging.cloud.appcelerator.com/v1";

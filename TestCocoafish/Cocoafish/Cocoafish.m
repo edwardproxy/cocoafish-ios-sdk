@@ -206,8 +206,16 @@ void CCLog(NSString *format, ...) {
 - (void)showWebView:(NSString *)which WithView:(UIView *)superView WithSelector:(SEL)sel WithTarget:(id)tar
 {
     SecurityViewController *securityViewController = [[SecurityViewController alloc] initWithNibName:nil bundle:nil];
+    
+    [UIView beginAnimations:@"ToggleSiblings" context:nil];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:superView cache:YES];
+    [UIView setAnimationDuration:1.0];
+    
     [superView addSubview:securityViewController.view];
     [superView bringSubviewToFront:securityViewController.view];
+    
+    [UIView commitAnimations];
+    
     if (@"SIGNUP" == which) {
         [securityViewController showSignUpPageWithURL:self.authURL consumerKey:[self getOauthConsumerKey] redirectUri:self.redirectUri delegate:self];
     }
@@ -303,8 +311,14 @@ void CCLog(NSString *format, ...) {
     [dict setObject:[NSNumber numberWithInteger:self.expiresIn] forKey:@"expiresIn"];
     [dict setObject:self.expiresAt forKey:@"expiresAt"];
     
+    [UIView beginAnimations:@"ToggleSiblings" context:nil];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:delWebView.superview.superview cache:YES];
+    [UIView setAnimationDuration:1.0];
+    
     [delWebView.superview setHidden:YES];
     [delWebView.superview release];
+    
+    [UIView commitAnimations];
     
     [target performSelector:callBack withObject:dict];
 }

@@ -206,8 +206,16 @@ void CCLog(NSString *format, ...) {
 - (void)showWebView:(NSString *)which WithView:(UIView *)superView WithSelector:(SEL)sel WithTarget:(id)tar
 {
     SecurityViewController *securityViewController = [[SecurityViewController alloc] initWithNibName:nil bundle:nil];
+    
+    [UIView beginAnimations:@"ToggleSiblings" context:nil];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:superView cache:YES];
+    [UIView setAnimationDuration:1.0];
+    
     [superView addSubview:securityViewController.view];
     [superView bringSubviewToFront:securityViewController.view];
+    
+    [UIView commitAnimations];
+    
     if (@"SIGNUP" == which) {
         [securityViewController showSignUpPageWithURL:self.authURL consumerKey:[self getOauthConsumerKey] redirectUri:self.redirectUri delegate:self];
     }
@@ -228,11 +236,10 @@ void CCLog(NSString *format, ...) {
     [self showWebView:@"SIGNIN" WithView:superView WithSelector:sel WithTarget:tar];
 }
 
-//- (void)signOut
-//{
-//    CCRequest *request = [[CCRequest alloc] initWithDelegate:self httpMethod:@"GET" baseUrl:@"users/logout.json" paramDict:nil];
-//    [request startAsynchronous];
-//}
+- (void)signOut
+{
+    
+}
 
 - (void)useThreeLegged:(BOOL)flag
 {
@@ -299,14 +306,19 @@ void CCLog(NSString *format, ...) {
     self.accessToken = accessToken;
     self.expiresIn = expiresIn;
     self.expiresAt = [[NSDate alloc] initWithTimeIntervalSinceNow:expiresIn];
-    self.isAuthorized = YES;
         
     [dict setObject:self.accessToken forKey:@"accessToken"];
     [dict setObject:[NSNumber numberWithInteger:self.expiresIn] forKey:@"expiresIn"];
     [dict setObject:self.expiresAt forKey:@"expiresAt"];
     
+    [UIView beginAnimations:@"ToggleSiblings" context:nil];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:delWebView.superview.superview cache:YES];
+    [UIView setAnimationDuration:1.0];
+    
     [delWebView.superview setHidden:YES];
     [delWebView.superview release];
+    
+    [UIView commitAnimations];
     
     [target performSelector:callBack withObject:dict];
 }

@@ -62,8 +62,10 @@
     CGRect rect = CGRectMake(0, navBar.frame.size.height, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height - navBar.frame.size.height);
     self.webView = [[UIWebView alloc] initWithFrame:rect];
     self.webView.delegate = del;
+
     [self.view addSubview:self.webView];
     [self.view bringSubviewToFront:self.webView];
+    
     NSString *urlString = [[NSString alloc] initWithString:@""];
     if (@"SIGNUP" == which) {
         urlString = [[NSString alloc] initWithFormat:@"http://%@/users/sign_up?client_id=%@&redirect_uri=%@",
@@ -96,8 +98,14 @@
 //    for (UIView *sub in self.view.superview.subviews) {
 //        [sub removeFromSuperview];
 //    }
+    [UIView beginAnimations:@"ToggleSiblings" context:nil];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.webView.superview.superview cache:YES];
+    [UIView setAnimationDuration:1.0];
+    
     [self.view setHidden:YES];
     [self.view release];
+    
+    [UIView commitAnimations];
 }
 
 //- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

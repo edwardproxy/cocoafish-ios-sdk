@@ -31,7 +31,7 @@
 @protocol CCFBSessionDelegate;
 
 @class CCDownloadManager;
-@interface Cocoafish : NSObject<FBSessionDelegate, FBRequestDelegate> {
+@interface Cocoafish : NSObject<FBSessionDelegate, FBRequestDelegate/*, UIWebViewDelegate*/> {
 	id<CCFBSessionDelegate> _fbSessionDelegate;
 	CCUser *_currentUser;
 	NSString *_appKey;
@@ -82,7 +82,7 @@
 
 - (void)signUpWithView:(UIView *)superView WithSelector:(SEL)sel WithTarget:(id)tar;
 - (void)signInWithView:(UIView *)superView WithSelector:(SEL)sel WithTarget:(id)tar;
-//- (void)signOut;
+- (void)signOut;
 - (void)useThreeLegged:(BOOL)flag;
 - (id)initWithOauthConsumerKey:(NSString *)consumerKey;
 + (void)initializeWithOauthConsumerKey:(NSString *)consumerKey;
