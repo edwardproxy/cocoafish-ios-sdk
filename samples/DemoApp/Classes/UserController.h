@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Cocoafish.h"
 
-@interface UserController : UITableViewController <CCRequestDelegate, CCFBSessionDelegate> {
+@interface UserController : UITableViewController <CCRequestDelegate, CCFBSessionDelegate, NSURLConnectionDelegate> {
 
 	NSArray *userCheckins; // list of places checked in
 }

@@ -10,6 +10,7 @@
 #import "CCConstants.h"
 #import "CCObject.h"
 #import <YAJL/YAJL.h>
+
 #import "Cocoafish.h"
 
 @interface CCResponse()

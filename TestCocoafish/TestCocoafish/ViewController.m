@@ -54,6 +54,13 @@
     NSArray *users = [response getObjectsOfType:[CCUser class]];
     if ([users count] == 1) {
         NSLog(@"Current user is %@", ((CCUser *)[users objectAtIndex:0]).firstName);
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Email"
+                                                            message:((CCUser *)[users objectAtIndex:0]).email
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+//        [alertView release];
     }
 }
 

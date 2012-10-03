@@ -9,6 +9,9 @@
 #import "UserController.h"
 #import "LoginViewController.h"
 #import "CocoafishLibrary.h"
+#import "CCFile.h"
+
+static NSInteger count = 0;
 
 @implementation UserController
 
@@ -47,6 +50,39 @@
 		button = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(startLogout)];
 		self.navigationItem.rightBarButtonItem = button;
 		[button release];
+        
+        /*
+         * uploadFile
+         */
+        UIButton *button_15MB = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        button_15MB.frame = CGRectMake(50, 100, 100, 50);
+        [button_15MB setTitle:@"upload 15MB" forState:UIControlStateNormal];
+        [button_15MB addTarget:self action:@selector(uploadFile_15MB) forControlEvents:UIControlEventTouchUpInside];
+		[self.view addSubview:button_15MB];
+        [self.view bringSubviewToFront:button_15MB];
+        
+        UIButton *button_10MB = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        button_10MB.frame = CGRectMake(50, 160, 100, 50);
+        [button_10MB setTitle:@"upload 10MB" forState:UIControlStateNormal];
+        [button_10MB addTarget:self action:@selector(uploadFile_10MB) forControlEvents:UIControlEventTouchUpInside];
+		[self.view addSubview:button_10MB];
+        [self.view bringSubviewToFront:button_10MB];
+        /*
+         * downloadFile
+         */
+        UIButton *getbutton_15MB = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        getbutton_15MB.frame = CGRectMake(180, 100, 120, 50);
+        [getbutton_15MB setTitle:@"download 15MB" forState:UIControlStateNormal];
+        [getbutton_15MB addTarget:self action:@selector(downloadFile_15MB) forControlEvents:UIControlEventTouchUpInside];
+		[self.view addSubview:getbutton_15MB];
+        [self.view bringSubviewToFront:getbutton_15MB];
+        
+        UIButton *getbutton_10MB = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        getbutton_10MB.frame = CGRectMake(180, 160, 120, 50);
+        [getbutton_10MB setTitle:@"download 10MB" forState:UIControlStateNormal];
+        [getbutton_10MB addTarget:self action:@selector(downloadFile_10MB) forControlEvents:UIControlEventTouchUpInside];
+		[self.view addSubview:getbutton_10MB];
+        [self.view bringSubviewToFront:getbutton_10MB];
 		
 	/*	if ([currentUser.facebookAccessToken length] > 0) {
 			// create the link with facebook button
@@ -110,8 +146,161 @@
 - (void)startLogout
 {	
     CCRequest *request = [[[CCRequest alloc] initWithDelegate:self httpMethod:@"GET" baseUrl:@"users/logout.json" paramDict:nil] autorelease];
-
+    
     [request startAsynchronous];
+}
+
+// to upload a file
+- (void)uploadFile_15MB
+{    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"file_15MB" ofType:@"dmg"];
+    NSData *myFileData = [NSData dataWithContentsOfFile:filePath];
+    NSMutableDictionary *paramDict = [NSMutableDictionary dictionaryWithCapacity:1];
+    [paramDict setObject:@"my_file_15MB" forKey:@"name"];
+    CCRequest *request = [[[CCRequest alloc] initWithDelegate:self httpMethod:@"POST" baseUrl:@"files/create.json" paramDict:paramDict] autorelease] ;
+    [request setData:(NSData *)myFileData withFileName:@"uploadedFile_15MB.dmg" andContentType:@"application/octet-stream" forKey:@"file"];
+    [request startAsynchronous];
+}
+- (void)uploadFile_10MB
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"file_10MB" ofType:@"dmg"];
+    NSData *myFileData = [NSData dataWithContentsOfFile:filePath];
+    NSMutableDictionary *paramDict = [NSMutableDictionary dictionaryWithCapacity:1];
+    [paramDict setObject:@"my_file_10MB" forKey:@"name"];
+    CCRequest *request = [[[CCRequest alloc] initWithDelegate:self httpMethod:@"POST" baseUrl:@"files/create.json" paramDict:paramDict] autorelease] ;
+    [request setData:(NSData *)myFileData withFileName:@"uploadedFile_10MB.dmg" andContentType:@"application/octet-stream" forKey:@"file"];
+    [request startAsynchronous];
+}
+- (void)downloadFile_15MB
+{
+    count = 0;
+    
+    NSURL *url = [[NSURL alloc] initWithString:@"http://storage.cloud.appcelerator.com/95t3sIWUcFnVPYyw5rM4khYWZCpLT9xn/files/f5/e6/506902919e73795f450003c0/uploadedFile_15MB.dmg"];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setDelegate:self];
+    [request startAsynchronous];
+    
+//    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url
+//                                                           cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+//                                                       timeoutInterval:kTimeoutInterval];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
+//                                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
+//                                                            timeoutInterval:60.0];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+//    [NSURLConnection connectionWithRequest:request delegate:self];
+//    NSURLResponse *response = [[NSURLResponse alloc] init];
+//    NSError *error = [[NSError alloc] init];
+//    
+//    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+//    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+//    int responseStatusCode = [httpResponse statusCode];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"download"
+//                                                    message:[NSString stringWithFormat:@"%d", responseStatusCode]
+//                                                   delegate:self
+//                                          cancelButtonTitle:@"OK"
+//                                          otherButtonTitles:nil];
+//    [alert show];
+//    if (data == nil) {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"download"
+//                                                        message:@"fail"
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"OK"
+//                                              otherButtonTitles:nil];
+//        [alert show];
+//        return;
+//    }
+//    // should be 14643787 bytes
+//    UIAlertView *alertDone = [[UIAlertView alloc] initWithTitle:@"download" message:[NSString stringWithFormat:@"done\n size: %d", data.length] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [alertDone show];
+}
+- (void)downloadFile_10MB
+{
+    count = 0;
+    
+    NSURL *url = [[NSURL alloc] initWithString:@"http://storage.cloud.appcelerator.com/95t3sIWUcFnVPYyw5rM4khYWZCpLT9xn/files/aa/21/506928ab6115402354000267/uploadedFile_10MB.dmg"];
+//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+//    [request setDelegate:self];
+//    [request startAsynchronous];
+    
+    //    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url
+    //                                                           cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+    //                                                       timeoutInterval:kTimeoutInterval];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
+//                                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
+//                                                             timeoutInterval:60.0];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    
+//    [NSURLConnection connectionWithRequest:request delegate:self];
+    
+    NSURLResponse *response = [[NSURLResponse alloc] init];
+    NSError *error = [[NSError alloc] init];
+    
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    int responseStatusCode = [httpResponse statusCode];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"download"
+                                                    message:[NSString stringWithFormat:@"%d", responseStatusCode]
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    if (data == nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"download"
+                                                        message:@"fail"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    // should be 23629311 bytes
+    // should be 10403840 bytes
+    UIAlertView *alertDone = [[UIAlertView alloc] initWithTitle:@"download" message:[NSString stringWithFormat:@"done\n size: %d", data.length] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertDone show];
+}
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    int responseStatusCode = [httpResponse statusCode];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"download"
+                                                    message:[NSString stringWithFormat:@"%d", responseStatusCode]
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    count += data.length;
+}
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"download" message:@"fail" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    // should be 23629311 bytes or 14643787 bytes or 10403840 bytes
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"download" message:[NSString stringWithFormat:@"done\n size: %d", count] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    // should be 23629311 bytes or 14643787 bytes or 10403840 bytes
+    NSData *responseData = [request responseData];
+    NSLog(@"size: %d Bytes", responseData.length);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"download" message:[NSString stringWithFormat:@"done\n size: %d", responseData.length] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"download" message:@"fail" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    int statusCode = [request responseStatusCode];
+    NSString *statusMessage = [request responseStatusMessage];
+    NSLog(@"status: %d\nmessage: %@", statusCode, statusMessage);
 }
 
 // unlink from facebook
@@ -162,6 +351,20 @@
             userCheckins = [[response getObjectsOfType:[CCCheckin class]] retain];
             [self.tableView reloadData];
         }
+    } else if ([response.meta.methodName isEqualToString:@"createFile"]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Email"
+                                                            message:@"Upload Done"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    } else if ([response.meta.methodName isEqualToString:@"showFile"]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"File"
+                                                            message:@"Download Done"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
     }
 	
 }

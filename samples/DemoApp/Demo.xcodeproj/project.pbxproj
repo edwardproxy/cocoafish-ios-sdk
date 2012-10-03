@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02CBB6D415E7D9B800520F95 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CBB6D315E7D9B800520F95 /* WebViewController.m */; };
+		0243C7701616D26D00560192 /* SecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0243C76F1616D26D00560192 /* SecurityViewController.m */; };
+		0243C7871616E87B00560192 /* file_15MB.dmg in Resources */ = {isa = PBXBuildFile; fileRef = 0243C7861616E87B00560192 /* file_15MB.dmg */; };
+		0243C7A116195F1400560192 /* file_10MB.dmg in Resources */ = {isa = PBXBuildFile; fileRef = 0243C7A016195F1400560192 /* file_10MB.dmg */; };
 		1D3623260D0F684500981E51 /* DemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DemoAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -107,8 +109,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		02CBB6D215E7D9B800520F95 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
-		02CBB6D315E7D9B800520F95 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		0243C76E1616D26D00560192 /* SecurityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityViewController.h; sourceTree = "<group>"; };
+		0243C76F1616D26D00560192 /* SecurityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityViewController.m; sourceTree = "<group>"; };
+		0243C7861616E87B00560192 /* file_15MB.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; path = file_15MB.dmg; sourceTree = "<group>"; };
+		0243C7A016195F1400560192 /* file_10MB.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; path = file_10MB.dmg; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* DemoAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* DemoAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoAppDelegate.m; sourceTree = "<group>"; };
@@ -308,6 +312,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0243C76D1616D26D00560192 /* SIServer */ = {
+			isa = PBXGroup;
+			children = (
+				0243C76E1616D26D00560192 /* SecurityViewController.h */,
+				0243C76F1616D26D00560192 /* SecurityViewController.m */,
+			);
+			path = SIServer;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +347,8 @@
 		29B97314FDCFA39411CA2CEA /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				0243C7A016195F1400560192 /* file_10MB.dmg */,
+				0243C7861616E87B00560192 /* file_15MB.dmg */,
 				B63DBCEC139851310068E556 /* AssetsLibrary.framework */,
 				B67B68C213341319001E4472 /* ASIHTTPRequest */,
 				B67B68D713341319001E4472 /* Cocoafish */,
@@ -499,8 +514,7 @@
 		B67B68D713341319001E4472 /* Cocoafish */ = {
 			isa = PBXGroup;
 			children = (
-				02CBB6D215E7D9B800520F95 /* WebViewController.h */,
-				02CBB6D315E7D9B800520F95 /* WebViewController.m */,
+				0243C76D1616D26D00560192 /* SIServer */,
 				B653F29A1360AA7600686E72 /* Common */,
 				B67B68D813341319001E4472 /* Cache */,
 				B67B68DB13341319001E4472 /* Cocoafish.h */,
@@ -721,6 +735,8 @@
 				B6A1AA3C132197F200D31CD3 /* Icon@2x.png in Resources */,
 				B6A1AA5513219CC700D31CD3 /* CheckinViewController.xib in Resources */,
 				B67B692E13341319001E4472 /* FBDialog.bundle in Resources */,
+				0243C7871616E87B00560192 /* file_15MB.dmg in Resources */,
+				0243C7A116195F1400560192 /* file_10MB.dmg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -800,7 +816,7 @@
 				B6589931147C37C900B445DB /* CLLocation+JSON.m in Sources */,
 				B6B273C214FE0A17002AD928 /* CCFile.m in Sources */,
 				B606182A159280A900E0D28A /* CCAcl.m in Sources */,
-				02CBB6D415E7D9B800520F95 /* WebViewController.m in Sources */,
+				0243C7701616D26D00560192 /* SecurityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,6 +827,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: SUN MINGDI (TX7G24VXSC)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -824,6 +841,8 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Demo-Info.plist";
 				PRODUCT_NAME = Demo;
+				PROVISIONING_PROFILE = "25F214BC-69A7-4412-809A-8578EAC8589A";
+				SDKROOT = iphoneos6.0;
 			};
 			name = Debug;
 		};
@@ -831,6 +850,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: SUN MINGDI (TX7G24VXSC)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -843,6 +863,8 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Demo-Info.plist";
 				PRODUCT_NAME = Demo;
+				PROVISIONING_PROFILE = "25F214BC-69A7-4412-809A-8578EAC8589A";
+				SDKROOT = iphoneos6.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -857,6 +879,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/../../src/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OBJROOT = build;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -865,7 +888,7 @@
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "51F08804-3F87-407D-A651-8ED0CD226C6A";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "51F08804-3F87-407D-A651-8ED0CD226C6A";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos5.1;
 				SYMROOT = build;
 			};
 			name = Debug;
@@ -880,6 +903,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/../Cocoafish-ios-sdk/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -888,7 +912,7 @@
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "51F08804-3F87-407D-A651-8ED0CD226C6A";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "51F08804-3F87-407D-A651-8ED0CD226C6A";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos5.1;
 				SYMROOT = build;
 			};
 			name = Release;

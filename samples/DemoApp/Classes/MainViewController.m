@@ -117,7 +117,7 @@
 -(void)ccrequest:(CCRequest *)request didSucceed:(CCResponse *)response
 {
     NSArray *places = [response getObjectsOfType:[CCPlace class]];
-     [mapViewController showPlaces:places];
+//     [mapViewController showPlaces:places];
     [listViewController showPlaces:places];
 }
 

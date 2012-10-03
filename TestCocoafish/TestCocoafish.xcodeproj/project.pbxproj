@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0243C7581616C85700560192 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0243C7571616C85700560192 /* YAJL.framework */; };
 		026C3D1815E8F606008C56A3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 026C3C9D15E8F606008C56A3 /* ASIAuthenticationDialog.m */; };
 		026C3D1915E8F606008C56A3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 026C3CA015E8F606008C56A3 /* ASIDataCompressor.m */; };
 		026C3D1A15E8F606008C56A3 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 026C3CA215E8F606008C56A3 /* ASIDataDecompressor.m */; };
@@ -76,10 +77,10 @@
 		02CBB6C715E7CDBC00520F95 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02CBB6C615E7CDBC00520F95 /* CoreLocation.framework */; };
 		02CBB6C915E7CDC600520F95 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02CBB6C815E7CDC600520F95 /* CFNetwork.framework */; };
 		02CBB6CB15E7CDE700520F95 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02CBB6CA15E7CDE700520F95 /* AssetsLibrary.framework */; };
-		02CBB6CD15E7CE2E00520F95 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02CBB6CC15E7CE2E00520F95 /* YAJL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0243C7571616C85700560192 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = ../src/YAJL.framework; sourceTree = "<group>"; };
 		026C3C9C15E8F606008C56A3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		026C3C9D15E8F606008C56A3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		026C3C9E15E8F606008C56A3 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -215,7 +216,6 @@
 		02CBB6C615E7CDBC00520F95 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		02CBB6C815E7CDC600520F95 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		02CBB6CA15E7CDE700520F95 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		02CBB6CC15E7CE2E00520F95 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = ../src/YAJL.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,7 +223,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02CBB6CD15E7CE2E00520F95 /* YAJL.framework in Frameworks */,
+				0243C7581616C85700560192 /* YAJL.framework in Frameworks */,
 				02CBB6CB15E7CDE700520F95 /* AssetsLibrary.framework in Frameworks */,
 				02CBB6C915E7CDC600520F95 /* CFNetwork.framework in Frameworks */,
 				02CBB6C715E7CDBC00520F95 /* CoreLocation.framework in Frameworks */,
@@ -427,7 +427,7 @@
 		02CBB5DF15E7CCF800520F95 = {
 			isa = PBXGroup;
 			children = (
-				02CBB6CC15E7CE2E00520F95 /* YAJL.framework */,
+				0243C7571616C85700560192 /* YAJL.framework */,
 				02CBB6CA15E7CDE700520F95 /* AssetsLibrary.framework */,
 				02CBB6C815E7CDC600520F95 /* CFNetwork.framework */,
 				02CBB6C615E7CDBC00520F95 /* CoreLocation.framework */,
@@ -662,6 +662,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -683,24 +684,33 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
 		02CBB60915E7CCF800520F95 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: SUN MINGDI (TX7G24VXSC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../src\"",
+					"\"$(SRCROOT)/../../Framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestCocoafish/TestCocoafish-Prefix.pch";
 				INFOPLIST_FILE = "TestCocoafish/TestCocoafish-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../src/YAJL.framework\"",
+					"\"$(SRCROOT)/../src/YAJL\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "D8CB4B07-FE2D-4DA7-927E-DD01ECBE5887";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -711,10 +721,16 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../src\"",
+					"\"$(SRCROOT)/../../Framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestCocoafish/TestCocoafish-Prefix.pch";
 				INFOPLIST_FILE = "TestCocoafish/TestCocoafish-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../src/YAJL.framework\"",
+					"\"$(SRCROOT)/../src/YAJL\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

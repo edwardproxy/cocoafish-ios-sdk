@@ -9,6 +9,7 @@
 #import "CLLocation+JSON.h"
 #import <YAJL/YAJL.h>
 
+
 @implementation CLLocation (JSON)
 - (id)JSON
 {

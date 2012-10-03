@@ -11,9 +11,10 @@
 #import "Cocoafish.h"
 
 // Your cocoafish app key must be set before running this demo
-#define COCOAFISH_APP_KEY @"TZPUNRnxQRZuEHJ0OENPgKiTFZQjUzb5"
-#if !defined(COCOAFISH_APP_KEY) 
-    #error : Please uncomment above line and set your app key
+//#define COCOAFISH_APP_KEY @"your app key here"
+#define COCOAFISH_APP_KEY @"4BqWRM0V4AJWnkmbt5UFxfOIYjB0qaEk"
+#if !defined(COCOAFISH_APP_KEY)
+//    #error : Please uncomment above line and set your app key
 #endif
 
 // If you want to add facebook support, please set the facebook app id here and pass it to initializeWithOauthConsumerKey.

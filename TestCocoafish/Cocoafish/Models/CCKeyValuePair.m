@@ -10,6 +10,7 @@
 #import "NSString+HTML.h"
 #import "YAJL/YAJL.h"
 
+
 @interface CCKeyValuePair ()
 
 @property (nonatomic, retain, readwrite) NSString *key;
@@ -38,6 +39,7 @@
         if ([self.type isEqualToString:@"json"]) {
             @try {
                 jsonObject = [jsonValue yajl_JSON];
+//                jsonObject = [NSJSONSerialization JSONObjectWithData:jsonValue options:nil error:nil];
             } @catch (NSException *e) {
                 // not a json string
             }

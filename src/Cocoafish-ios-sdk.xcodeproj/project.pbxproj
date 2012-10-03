@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		026C3D6415EB6560008C56A3 /* SecurityViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 026C3D6215EB6560008C56A3 /* SecurityViewController.h */; };
-		026C3D6515EB6560008C56A3 /* SecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026C3D6315EB6560008C56A3 /* SecurityViewController.m */; };
+		0243C7631616D18200560192 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0243C7621616D18200560192 /* YAJL.framework */; };
+		0243C7671616D1AF00560192 /* SecurityViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0243C7651616D1AF00560192 /* SecurityViewController.h */; };
+		0243C7681616D1AF00560192 /* SecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0243C7661616D1AF00560192 /* SecurityViewController.m */; };
 		B604294B133D3973008CEE69 /* ASIAuthenticationDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = B60428F7133D3973008CEE69 /* ASIAuthenticationDialog.h */; };
 		B604294C133D3973008CEE69 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B60428F8133D3973008CEE69 /* ASIAuthenticationDialog.m */; };
 		B604294D133D3973008CEE69 /* ASICacheDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B60428F9133D3973008CEE69 /* ASICacheDelegate.h */; };
@@ -105,7 +106,6 @@
 		B656033D13E3D6AB0094140B /* CCReview.m in Sources */ = {isa = PBXBuildFile; fileRef = B656033313E3D6AB0094140B /* CCReview.m */; };
 		B656033E13E3D6AB0094140B /* CCShareRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B656033413E3D6AB0094140B /* CCShareRequest.h */; };
 		B656033F13E3D6AB0094140B /* CCShareRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B656033513E3D6AB0094140B /* CCShareRequest.m */; };
-		B68992AC12C30077006D4ED8 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B68992AA12C30077006D4ED8 /* YAJL.framework */; };
 		B69378551479E4AD004A51F1 /* NSDate+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B69378541479E4AD004A51F1 /* NSDate+JSON.h */; };
 		B69378581479E4BA004A51F1 /* NSDate+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B69378571479E4BA004A51F1 /* NSDate+JSON.m */; };
 		B693785F1479E4E6004A51F1 /* CCFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = B69378591479E4E6004A51F1 /* CCFeed.h */; };
@@ -126,8 +126,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		026C3D6215EB6560008C56A3 /* SecurityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityViewController.h; sourceTree = "<group>"; };
-		026C3D6315EB6560008C56A3 /* SecurityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityViewController.m; sourceTree = "<group>"; };
+		0243C7621616D18200560192 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = "../../edwardproxy/cocoafish-ios-sdk/src/YAJL.framework"; sourceTree = "<group>"; };
+		0243C7651616D1AF00560192 /* SecurityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityViewController.h; sourceTree = "<group>"; };
+		0243C7661616D1AF00560192 /* SecurityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityViewController.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -260,20 +261,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B68992AC12C30077006D4ED8 /* YAJL.framework in Frameworks */,
+				0243C7631616D18200560192 /* YAJL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		026C3D6115EB6560008C56A3 /* SIServer */ = {
+		0243C7641616D1AF00560192 /* SIServer */ = {
 			isa = PBXGroup;
 			children = (
-				026C3D6215EB6560008C56A3 /* SecurityViewController.h */,
-				026C3D6315EB6560008C56A3 /* SecurityViewController.m */,
+				0243C7651616D1AF00560192 /* SecurityViewController.h */,
+				0243C7661616D1AF00560192 /* SecurityViewController.m */,
 			);
-			path = SIServer;
+			name = SIServer;
+			path = Cocoafish/SIServer;
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -287,6 +289,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				0243C7641616D1AF00560192 /* SIServer */,
+				0243C7621616D18200560192 /* YAJL.framework */,
 				B64B26F0138097890053E943 /* Cocoafish */,
 				B60428F6133D3973008CEE69 /* ASIHTTPRequest */,
 				B6042932133D3973008CEE69 /* FBConnect */,
@@ -391,7 +395,6 @@
 		B64B26F0138097890053E943 /* Cocoafish */ = {
 			isa = PBXGroup;
 			children = (
-				026C3D6115EB6560008C56A3 /* SIServer */,
 				B64B26F1138097890053E943 /* Cache */,
 				B64B26F4138097890053E943 /* Cocoafish.h */,
 				B64B26F5138097890053E943 /* Cocoafish.m */,
@@ -572,7 +575,7 @@
 				B619BBEF147DC42900AE5D60 /* CLLocation+JSON.h in Headers */,
 				B6B273C914FE0C0A002AD928 /* CCFile.h in Headers */,
 				B6204B2E159BB6D10017206C /* CCAcl.h in Headers */,
-				026C3D6415EB6560008C56A3 /* SecurityViewController.h in Headers */,
+				0243C7671616D1AF00560192 /* SecurityViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,7 +681,7 @@
 				B619BBF0147DC42900AE5D60 /* CLLocation+JSON.m in Sources */,
 				B6B273CA14FE0C0A002AD928 /* CCFile.m in Sources */,
 				B6204B2F159BB6D10017206C /* CCAcl.m in Sources */,
-				026C3D6515EB6560008C56A3 /* SecurityViewController.m in Sources */,
+				0243C7681616D1AF00560192 /* SecurityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,9 +696,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../edwardproxy/cocoafish-ios-sdk/src\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../gabriel-yajl-objc/Project-iOS/Build/Products/Debug-iphoneos\"",
+				);
 				OBJROOT = build;
 				PREBINDING = NO;
 				PRODUCT_NAME = Cocoafish;
@@ -713,8 +721,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../edwardproxy/cocoafish-ios-sdk/src\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../gabriel-yajl-objc/Project-iOS/Build/Products/Debug-iphoneos\"",
+				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Cocoafish;
 				SDKROOT = iphoneos;
