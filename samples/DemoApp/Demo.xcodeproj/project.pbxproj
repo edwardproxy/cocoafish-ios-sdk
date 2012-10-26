@@ -827,6 +827,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: SUN MINGDI (TX7G24VXSC)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -840,9 +841,11 @@
 				GCC_PREFIX_HEADER = Demo_Prefix.pch;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Demo-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Demo;
 				PROVISIONING_PROFILE = "25F214BC-69A7-4412-809A-8578EAC8589A";
 				SDKROOT = iphoneos6.0;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -850,6 +853,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: SUN MINGDI (TX7G24VXSC)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -862,10 +866,12 @@
 				GCC_PREFIX_HEADER = Demo_Prefix.pch;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Demo-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Demo;
 				PROVISIONING_PROFILE = "25F214BC-69A7-4412-809A-8578EAC8589A";
 				SDKROOT = iphoneos6.0;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};

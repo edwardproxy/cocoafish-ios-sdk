@@ -1,0 +1,1 @@
+/Users/edwardsun/Appcelerator/edwardproxy/cocoafish-ios-sdk/samples/DemoApp/DerivedData/Demo/ArchiveIntermediates/Demo/InstallationBuildProductsLocation/Applications/Demo.app
