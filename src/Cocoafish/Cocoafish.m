@@ -9,7 +9,12 @@
 #import "Cocoafish.h"
 #import "CCDownloadManager.h"
 
+#import "SecurityViewController.h"
+
 static Cocoafish *theDefaultCocoafish = nil;
+
+static SEL callBack = nil;
+static id target = nil;
 
 // Encode a string to embed in an URL.
 NSString* encodeToPercentEscapeString(NSString *string) {
@@ -52,6 +57,17 @@ void CCLog(NSString *format, ...) {
 @synthesize apiURL = _apiURL;
 //@synthesize downloadManagerEnabled = _downloadManagerEnabled;
 
+//---------------------------------------
+//added by Edward Sun 2012-08-22
+@synthesize accessToken = _accessToken;
+@synthesize expiresAt = _expiresAt;
+@synthesize expiresIn = _expiresIn;
+@synthesize isThreeLegged = _isThreeLegged;
+@synthesize isAuthorized = _isAuthorized;
+@synthesize authURL = _authURL;
+@synthesize redirectUri = _redirectUri;
+//---------------------------------------
+
 -(id)initWithAppKey:(NSString *)appKey customAppIds:(NSDictionary *)customAppIds
 {
 	if (appKey == nil || [appKey length] == 0) {
@@ -74,6 +90,19 @@ void CCLog(NSString *format, ...) {
 		_consumerKey = [consumerKey copy];
 		_consumerSecret = [consumerSecret copy];
 		[self initCommon:customAppIds];
+	}
+	return self;
+}
+
+-(id)initWithOauthConsumerKey:(NSString *)consumerKey
+{
+	if ([consumerKey length] == 0) {
+		[NSException raise:@"Missing Cocoafish Oauth Consumer Key" format:@"Oauth info is missing"];
+	}
+	if ((self = [super init])) {
+		_consumerKey = [consumerKey copy];
+//		_consumerSecret = [consumerSecret copy];
+//		[self initCommon:customAppIds];
 	}
 	return self;
 }
@@ -168,6 +197,132 @@ void CCLog(NSString *format, ...) {
 	[prefs synchronize];
 
 }
+
+//------------------------------------
+//added by Edward Sun 2012-08-22
+#pragma mark -
+#pragma mark for Secure-Identity-Server
+
+- (void)showWebView:(NSString *)which WithView:(UIView *)superView WithSelector:(SEL)sel WithTarget:(id)tar
+{
+    SecurityViewController *securityViewController = [[SecurityViewController alloc] initWithNibName:nil bundle:nil];
+    
+    [UIView beginAnimations:@"ToggleSiblings" context:nil];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:superView cache:YES];
+    [UIView setAnimationDuration:1.0];
+    
+    [superView addSubview:securityViewController.view];
+    [superView bringSubviewToFront:securityViewController.view];
+    
+    [UIView commitAnimations];
+    
+    if (@"SIGNUP" == which) {
+        [securityViewController showSignUpPageWithURL:self.authURL consumerKey:[self getOauthConsumerKey] redirectUri:self.redirectUri delegate:self];
+    }
+    if (@"SIGNIN" == which) {
+        [securityViewController showSignInPageWithURL:self.authURL consumerKey:[self getOauthConsumerKey] redirectUri:self.redirectUri delegate:self];
+    }
+    callBack = sel;
+    target = tar;
+}
+
+- (void)signUpWithView:(UIView *)superView WithSelector:(SEL)sel WithTarget:(id)tar
+{
+    [self showWebView:@"SIGNUP" WithView:superView WithSelector:sel WithTarget:tar];
+}
+
+- (void)signInWithView:(UIView *)superView WithSelector:(SEL)sel WithTarget:(id)tar
+{
+    [self showWebView:@"SIGNIN" WithView:superView WithSelector:sel WithTarget:tar];
+}
+
+- (void)signOut
+{
+    
+}
+
+- (void)useThreeLegged:(BOOL)flag
+{
+    _isThreeLegged = flag;
+}
+
+- (void)removeFromSuperView:(id)sender
+{
+    for (id view in sender) {
+        [view removeFromSuperview];
+        [view release];
+    }
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)delWebView
+{
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [indicator setFrame:CGRectMake((delWebView.frame.size.width /2 - indicator.frame.size.width / 2),
+                                   (delWebView.frame.size.height /2 - indicator.frame.size.height / 2),
+                                   indicator.frame.size.width,
+                                   indicator.frame.size.height)];
+    [delWebView addSubview:indicator];
+    [delWebView bringSubviewToFront:indicator];
+    [indicator startAnimating];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)delWebView
+{
+    if ([delWebView.subviews count] != 0) {
+        for (id obj in delWebView.subviews) {
+            if ([obj respondsToSelector:@selector(stopAnimating)]) {
+                [(UIActivityIndicatorView *)obj stopAnimating];
+                [obj release];
+            }
+        }
+    }
+    
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    self.accessToken = @"";
+    self.expiresIn = -1;
+    self.expiresAt = [NSDate dateWithTimeIntervalSince1970:0];
+    [dict setObject:self.accessToken forKey:@"accessToken"];
+    [dict setObject:[NSNumber numberWithInteger:self.expiresIn] forKey:@"expiresIn"];
+    [dict setObject:self.expiresAt forKey:@"expiresAt"];
+    
+    NSString *url = [[NSString alloc] initWithString:[[delWebView.request URL] absoluteString]];
+    
+    if (0 == [url rangeOfString:@"#access_token"].length) {
+        [target performSelector:callBack withObject:dict];
+        [url release];
+        return;
+    }
+    
+    NSString *fragment = [[delWebView.request URL] fragment];
+    NSRange ar = [fragment rangeOfString:@"access_token"];
+    NSRange er = [fragment rangeOfString:@"&expires_in"];
+    ar.location += @"access_token".length + 1;
+    ar.length = er.location - ar.location;
+    er.location += @"&expires_in".length + 1;
+    er.length = fragment.length - er.location;
+    NSString *accessToken = [fragment substringWithRange:ar];
+    NSInteger expiresIn = [[fragment substringWithRange:er] integerValue];
+    
+    self.accessToken = accessToken;
+    self.expiresIn = expiresIn;
+    self.expiresAt = [[NSDate alloc] initWithTimeIntervalSinceNow:expiresIn];
+        
+    [dict setObject:self.accessToken forKey:@"accessToken"];
+    [dict setObject:[NSNumber numberWithInteger:self.expiresIn] forKey:@"expiresIn"];
+    [dict setObject:self.expiresAt forKey:@"expiresAt"];
+    
+    [UIView beginAnimations:@"ToggleSiblings" context:nil];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:delWebView.superview.superview cache:YES];
+    [UIView setAnimationDuration:1.0];
+    
+    [delWebView.superview setHidden:YES];
+    [delWebView.superview release];
+    
+    [UIView commitAnimations];
+    
+    [target performSelector:callBack withObject:dict];
+}
+//------------------------------------
 
 #pragma mark -
 #pragma mark facebook related
@@ -366,6 +521,14 @@ void CCLog(NSString *format, ...) {
 	[_cocoafishDir release];
     [_jsonDateFormatter release];
     [_exifDateFormatter release];
+    
+    //---------------------------
+    //added by Edward Sun 2012-08-22
+    [_accessToken release];
+    [_expiresAt release];
+    [_authURL release];
+    [_redirectUri release];
+    //---------------------------
 	[super dealloc];
 }
 
@@ -404,6 +567,16 @@ void CCLog(NSString *format, ...) {
             return;
         }
         theDefaultCocoafish = [[Cocoafish alloc] initWithOauthConsumerKey:consumerKey consumerSecret:consumerSecret customAppIds:customAppIds];
+    }
+}
+
++(void)initializeWithOauthConsumerKey:(NSString *)consumerKey
+{
+    @synchronized(theDefaultCocoafish) {
+        if (theDefaultCocoafish != nil) {
+            return;
+        }
+        theDefaultCocoafish = [[Cocoafish alloc] initWithOauthConsumerKey:consumerKey];
     }
 }
 

@@ -31,7 +31,7 @@
 @protocol CCFBSessionDelegate;
 
 @class CCDownloadManager;
-@interface Cocoafish : NSObject<FBSessionDelegate, FBRequestDelegate> {
+@interface Cocoafish : NSObject<FBSessionDelegate, FBRequestDelegate/*, UIWebViewDelegate*/> {
 	id<CCFBSessionDelegate> _fbSessionDelegate;
 	CCUser *_currentUser;
 	NSString *_appKey;
@@ -47,6 +47,17 @@
     NSDateFormatter *_exifDateFormatter;
     NSString *_apiUrl;
  //   BOOL _downloadManagerEnabled;
+    
+    //----------------------------------
+    //Added by Edward Sun 2012-08-19
+    NSString    *_accessToken;
+    NSDate      *_expiresAt;
+    NSInteger   _expiresIn;
+    BOOL        _isThreeLegged;
+    BOOL        _isAuthorized;
+    NSString    *_authURL;
+    NSString    *_redirectUri;
+    //----------------------------------
 }
 
 @property(nonatomic, assign) id<CCFBSessionDelegate> _fbSessionDelegate;
@@ -57,7 +68,25 @@
 @property(nonatomic, retain, readwrite) NSDateFormatter *jsonDateFormatter;
 @property(nonatomic, retain, readwrite) NSDateFormatter *exifDateFormatter;
 @property(nonatomic, retain, readwrite) NSString *apiURL;
+@property(nonatomic, retain, readwrite) NSString *redirectUri;
 //@property(nonatomic, assign, readwrite) BOOL downloadManagerEnabled;
+
+//----------------------------------
+//Added by Edward Sun 2012-08-19
+@property (nonatomic, retain, readwrite)  NSString    *accessToken;
+@property (nonatomic, retain, readwrite)  NSDate      *expiresAt;
+@property (nonatomic, readwrite)          NSInteger   expiresIn;
+@property (nonatomic, readwrite)          BOOL        isThreeLegged;
+@property (nonatomic, readwrite)          BOOL        isAuthorized;
+@property (nonatomic, retain, readwrite)  NSString    *authURL;
+
+- (void)signUpWithView:(UIView *)superView WithSelector:(SEL)sel WithTarget:(id)tar;
+- (void)signInWithView:(UIView *)superView WithSelector:(SEL)sel WithTarget:(id)tar;
+- (void)signOut;
+- (void)useThreeLegged:(BOOL)flag;
+- (id)initWithOauthConsumerKey:(NSString *)consumerKey;
++ (void)initializeWithOauthConsumerKey:(NSString *)consumerKey;
+//----------------------------------
 
 +(void)initializeWithAppKey:(NSString *)appKey customAppIds:(NSDictionary *)customAppIds;;
 +(void)initializeWithOauthConsumerKey:(NSString *)consumerKey consumerSecret:(NSString *)consumerSecret customAppIds:(NSDictionary *)customAppIds;;
