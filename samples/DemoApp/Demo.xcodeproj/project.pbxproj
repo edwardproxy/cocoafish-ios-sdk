@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02FE660A163B2DEA0067A4C1 /* SecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02FE6609163B2DEA0067A4C1 /* SecurityViewController.m */; };
 		1D3623260D0F684500981E51 /* DemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DemoAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -107,6 +108,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02FE6608163B2DEA0067A4C1 /* SecurityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityViewController.h; sourceTree = "<group>"; };
+		02FE6609163B2DEA0067A4C1 /* SecurityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityViewController.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* DemoAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* DemoAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoAppDelegate.m; sourceTree = "<group>"; };
@@ -313,6 +316,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02FE6607163B2DEA0067A4C1 /* SIServer */ = {
+			isa = PBXGroup;
+			children = (
+				02FE6608163B2DEA0067A4C1 /* SecurityViewController.h */,
+				02FE6609163B2DEA0067A4C1 /* SecurityViewController.m */,
+			);
+			path = SIServer;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -512,6 +524,7 @@
 		B67B68D713341319001E4472 /* Cocoafish */ = {
 			isa = PBXGroup;
 			children = (
+				02FE6607163B2DEA0067A4C1 /* SIServer */,
 				B653F29A1360AA7600686E72 /* Common */,
 				B67B68D813341319001E4472 /* Cache */,
 				B67B68DB13341319001E4472 /* Cocoafish.h */,
@@ -803,6 +816,7 @@
 				B6589931147C37C900B445DB /* CLLocation+JSON.m in Sources */,
 				B6B273C214FE0A17002AD928 /* CCFile.m in Sources */,
 				B606182A159280A900E0D28A /* CCAcl.m in Sources */,
+				02FE660A163B2DEA0067A4C1 /* SecurityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

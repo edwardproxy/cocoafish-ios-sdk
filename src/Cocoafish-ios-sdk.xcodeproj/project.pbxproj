@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02FE6612163B2E170067A4C1 /* SecurityViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 02FE6610163B2E170067A4C1 /* SecurityViewController.h */; };
+		02FE6613163B2E170067A4C1 /* SecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02FE6611163B2E170067A4C1 /* SecurityViewController.m */; };
 		B604294B133D3973008CEE69 /* ASIAuthenticationDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = B60428F7133D3973008CEE69 /* ASIAuthenticationDialog.h */; };
 		B604294C133D3973008CEE69 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B60428F8133D3973008CEE69 /* ASIAuthenticationDialog.m */; };
 		B604294D133D3973008CEE69 /* ASICacheDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B60428F9133D3973008CEE69 /* ASICacheDelegate.h */; };
@@ -124,6 +126,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02FE6610163B2E170067A4C1 /* SecurityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityViewController.h; sourceTree = "<group>"; };
+		02FE6611163B2E170067A4C1 /* SecurityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityViewController.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -263,6 +267,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02FE660F163B2E170067A4C1 /* SIServer */ = {
+			isa = PBXGroup;
+			children = (
+				02FE6610163B2E170067A4C1 /* SecurityViewController.h */,
+				02FE6611163B2E170067A4C1 /* SecurityViewController.m */,
+			);
+			path = SIServer;
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +391,7 @@
 		B64B26F0138097890053E943 /* Cocoafish */ = {
 			isa = PBXGroup;
 			children = (
+				02FE660F163B2E170067A4C1 /* SIServer */,
 				B64B26F1138097890053E943 /* Cache */,
 				B64B26F4138097890053E943 /* Cocoafish.h */,
 				B64B26F5138097890053E943 /* Cocoafish.m */,
@@ -558,6 +572,7 @@
 				B619BBEF147DC42900AE5D60 /* CLLocation+JSON.h in Headers */,
 				B6B273C914FE0C0A002AD928 /* CCFile.h in Headers */,
 				B6204B2E159BB6D10017206C /* CCAcl.h in Headers */,
+				02FE6612163B2E170067A4C1 /* SecurityViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,6 +678,7 @@
 				B619BBF0147DC42900AE5D60 /* CLLocation+JSON.m in Sources */,
 				B6B273CA14FE0C0A002AD928 /* CCFile.m in Sources */,
 				B6204B2F159BB6D10017206C /* CCAcl.m in Sources */,
+				02FE6613163B2E170067A4C1 /* SecurityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
