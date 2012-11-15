@@ -297,7 +297,7 @@
         NSError* error = nil;
         NSArray* filesArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[Cocoafish defaultCocoafish].cocoafishDir error:&error];
         if(error != nil) {
-            CCLog(@"Error in reading files: %@", [error localizedDescription]);
+            NSLog(@"Error in reading files: %@", [error localizedDescription]);
             return;
         }
         if ([filesArray count] == 0) {
@@ -369,7 +369,7 @@
                 break;
             }
             if ([[NSFileManager defaultManager] removeItemAtPath:[file objectForKey:@"path"] error:&error] != YES) {
-                CCLog(@"Unable to delete file: %@", [error localizedDescription]);
+                NSLog(@"Unable to delete file: %@", [error localizedDescription]);
                 continue;
             }
             fileSize -= [[file objectForKey:@"size"] unsignedLongLongValue];

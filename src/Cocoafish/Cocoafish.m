@@ -121,7 +121,7 @@ void CCLog(NSString *format, ...) {
 	//[self cleanupCacheDir];
 
 	if (![[NSFileManager defaultManager] createDirectoryAtPath:_cocoafishDir withIntermediateDirectories:NO attributes:nil error:nil]) {
-		CCLog(@"Failed to create %@, photo download will not work", _cocoafishDir);
+		NSLog(@"Failed to create %@, photo download will not work", _cocoafishDir);
 	}
     
     _downloadManager = [[CCDownloadManager alloc] init];
@@ -132,7 +132,7 @@ void CCLog(NSString *format, ...) {
 		if (customAppId != nil) {
 			_facebook = [[Facebook alloc] initWithAppId:customAppId andDelegate:self];
 			_facebookAppId = [customAppId copy];
-			CCLog(@"Cocoafish: initialized facebook with app Id %@", customAppId);
+			NSLog(@"Cocoafish: initialized facebook with app Id %@", customAppId);
 		}
 	}
 	
@@ -456,7 +456,7 @@ void CCLog(NSString *format, ...) {
 	
 	// debug
     if ([[Cocoafish defaultCocoafish] loggingEnabled]) {
-        CCLog(@"Storing cookies into file %@", cookieDataPath);
+        NSLog(@"Storing cookies into file %@", cookieDataPath);
     }
 	
 	NSHTTPCookieStorage* sharedCookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];

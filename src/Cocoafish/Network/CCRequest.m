@@ -347,7 +347,7 @@
     
 	if (gotByteCount) {
 		if (err) {
-			CCLog(@"!!! Error reading asset: %@", [err localizedDescription]);
+			NSLog(@"!!! Error reading asset: %@", [err localizedDescription]);
 			[err release];
 			free(buff);
 			return nil;

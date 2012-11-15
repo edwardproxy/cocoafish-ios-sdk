@@ -52,7 +52,7 @@
         self.externalAccounts = [CCPhoto arrayWithJsonResponse:jsonResponse class:[CCExternalAccount class]];
 
         /*    if (self.firstName == nil && self.lastName == nil && self.username == nil) {
-         CCLog(@"Invalid user object from server: %@", jsonResponse);
+         NSLog(@"Invalid user object from server: %@", jsonResponse);
          [self release];
          self = nil;
          return self;

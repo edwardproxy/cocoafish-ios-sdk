@@ -66,7 +66,7 @@
 		}
 		// Sanity check
 		if (_meta == nil) {
-			CCLog(@"No meta data found in response");
+			NSLog(@"No meta data found in response");
 			[self release];
 			self = nil;
 		}
@@ -91,7 +91,7 @@
 	} 
 	@catch (NSException *exception) {
 		// Failed to parse
-		CCLog(@"Failed to parse data using YAJL JSON parser. Reason: %@", exception.reason);
+		NSLog(@"Failed to parse data using YAJL JSON parser. Reason: %@", exception.reason);
 	}
 	return nil;
 }
