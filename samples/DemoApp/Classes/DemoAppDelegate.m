@@ -11,13 +11,13 @@
 #import "Cocoafish.h"
 
 // Your cocoafish app key must be set before running this demo
-#define COCOAFISH_APP_KEY @"CNnnfe2hAtkDTxrWKPUgby3cy9aCEJX4"
+#define COCOAFISH_APP_KEY @"NDEZ9nV1weTg58gzfSlG4VHGgBRfYU3j"
 #if !defined(COCOAFISH_APP_KEY)
     #error : Please uncomment above line and set your app key
 #endif
 
 // If you want to add facebook support, please set the facebook app id here and pass it to initializeWithOauthConsumerKey.
-static NSString * const facebookAppId = @"474929905872606";
+static NSString * const facebookAppId = @"174095952730174";
 
 
 @implementation DemoAppDelegate
@@ -33,10 +33,10 @@ static NSString * const facebookAppId = @"474929905872606";
 {    
     
 	// Initialize Cocoafish
-//    [Cocoafish initializeWithAppKey:COCOAFISH_APP_KEY customAppIds:nil];
+    [Cocoafish initializeWithAppKey:COCOAFISH_APP_KEY customAppIds:nil];
    
     // Initialize Cocoafish with facebook App Id if you set one
-    [Cocoafish initializeWithAppKey:COCOAFISH_APP_KEY customAppIds:[NSDictionary dictionaryWithObject:facebookAppId forKey:@"Facebook"]]; 
+//    [Cocoafish initializeWithAppKey:COCOAFISH_APP_KEY customAppIds:[NSDictionary dictionaryWithObject:facebookAppId forKey:@"Facebook"]]; 
     
 	 // Add the tab bar controller's view to the window and display.
     [window addSubview:tabBarController.view];

@@ -110,7 +110,7 @@ void CCLog(NSString *format, ...) {
 
 -(void)initCommon:(NSDictionary *)customAppIds
 {
-    self.loggingEnabled = true;
+    self.loggingEnabled = false;
     theDefaultCocoafish = self;
     self.apiURL = CC_BACKEND_URL;
 

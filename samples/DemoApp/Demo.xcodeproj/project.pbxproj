@@ -102,9 +102,9 @@
 		F4801BF51637F14700BE1C6C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4801BF41637F14700BE1C6C /* FacebookSDK.framework */; };
 		F4801BFD1637F1D500BE1C6C /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F4801BFB1637F1D500BE1C6C /* FacebookSDKResources.bundle */; };
 		F4801BFE1637F1D500BE1C6C /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F4801BFC1637F1D500BE1C6C /* FBUserSettingsViewResources.bundle */; };
-		F4801C021637F26D00BE1C6C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4801BFF1637F26D00BE1C6C /* Accounts.framework */; };
-		F4801C031637F26D00BE1C6C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4801C001637F26D00BE1C6C /* AdSupport.framework */; };
-		F4801C041637F26D00BE1C6C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4801C011637F26D00BE1C6C /* Social.framework */; };
+		F4801C021637F26D00BE1C6C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4801BFF1637F26D00BE1C6C /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F4801C031637F26D00BE1C6C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4801C001637F26D00BE1C6C /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F4801C041637F26D00BE1C6C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4801C011637F26D00BE1C6C /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -827,6 +827,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = armv7;
+				CODE_SIGN_IDENTITY = "iPhone Developer: SUN MINGDI (TX7G24VXSC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: SUN MINGDI (TX7G24VXSC)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -839,12 +842,14 @@
 				GCC_PREFIX_HEADER = Demo_Prefix.pch;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Demo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = Demo;
+				SDKROOT = iphoneos6.0;
 			};
 			name = Debug;
 		};
@@ -852,6 +857,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = armv7;
+				CODE_SIGN_IDENTITY = "iPhone Developer: SUN MINGDI (TX7G24VXSC)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -863,12 +870,14 @@
 				GCC_PREFIX_HEADER = Demo_Prefix.pch;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Demo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = Demo;
+				SDKROOT = iphoneos6.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -876,46 +885,50 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Kong (83669HJ83B)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Kong (83669HJ83B)";
+				ARCHS = armv7;
+				CODE_SIGN_IDENTITY = "iPhone Developer: SUN MINGDI (TX7G24VXSC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: SUN MINGDI (TX7G24VXSC)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/../../src/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OBJROOT = build;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "51F08804-3F87-407D-A651-8ED0CD226C6A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "51F08804-3F87-407D-A651-8ED0CD226C6A";
-				SDKROOT = iphoneos;
+				PROVISIONING_PROFILE = "AB96B259-C1B5-4041-A83D-B3E76D8CE298";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AB96B259-C1B5-4041-A83D-B3E76D8CE298";
+				SDKROOT = iphoneos6.0;
 				SYMROOT = build;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Kong (83669HJ83B)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Kong (83669HJ83B)";
+				ARCHS = armv7;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/../Cocoafish-ios-sdk/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "51F08804-3F87-407D-A651-8ED0CD226C6A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "51F08804-3F87-407D-A651-8ED0CD226C6A";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.0;
 				SYMROOT = build;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
