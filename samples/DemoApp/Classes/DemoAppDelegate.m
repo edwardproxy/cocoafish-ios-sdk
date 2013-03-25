@@ -34,6 +34,8 @@ static NSString * const facebookAppId = @"174095952730174";
     
 	// Initialize Cocoafish
     [Cocoafish initializeWithAppKey:COCOAFISH_APP_KEY customAppIds:nil];
+    
+//    [Cocoafish initializeWithOauthConsumerKey:@"jNMQP76N5nR25yXYJ239bmHzPoox0I4O" consumerSecret:@"y7bmfeGlhtfztR2kCeihNfYP25PZu2WR" customAppIds:nil];
    
     // Initialize Cocoafish with facebook App Id if you set one
 //    [Cocoafish initializeWithAppKey:COCOAFISH_APP_KEY customAppIds:[NSDictionary dictionaryWithObject:facebookAppId forKey:@"Facebook"]]; 
